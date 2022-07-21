@@ -18,7 +18,7 @@ public class OrderTest {
     public void positive() {
         $(By.name("name")).setValue("Иванов Иван");
         $(By.name("phone")).setValue("+79991234567");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.cssSelector(".paragraph[data-test-id=\"order-success\"]")).shouldHave(
                 text("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.")
@@ -29,7 +29,7 @@ public class OrderTest {
     public void positiveNameMinusSign() {
         $(By.name("name")).setValue("Иванов-Иван");
         $(By.name("phone")).setValue("+79991234567");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.cssSelector(".paragraph[data-test-id=\"order-success\"]")).shouldHave(
                 text("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.")
@@ -40,7 +40,7 @@ public class OrderTest {
     public void wrongName() {
         $(By.name("name")).setValue("Qwerty");
         $(By.name("phone")).setValue("+79991234567");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.cssSelector("[data-test-id=\"name\"] .input__sub")).shouldHave(
                 text("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.")
@@ -51,7 +51,7 @@ public class OrderTest {
     public void emptyName() {
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.name("phone")).setValue("+79991234567");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("[data-test-id=\"name\"] .input__sub")).shouldHave(
                 text("Поле обязательно для заполнения")
         );
@@ -61,7 +61,7 @@ public class OrderTest {
     public void wrongPhone() {
         $(By.name("name")).setValue("Иванов Иван");
         $(By.name("phone")).setValue("wrong");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.cssSelector("[data-test-id=\"phone\"] .input__sub")).shouldHave(
                 text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.")
@@ -72,7 +72,7 @@ public class OrderTest {
     public void missPlacedPlusSign() {
         $(By.name("name")).setValue("Иванов Иван");
         $(By.name("phone")).setValue("7+9991234567");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.cssSelector("[data-test-id=\"phone\"] .input__sub")).shouldHave(
                 text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.")
@@ -82,7 +82,7 @@ public class OrderTest {
     @Test
     public void emptyPhone() {
         $(By.name("name")).setValue("Иванов Иван");
-        $(By.className("checkbox__box")).click();
+        $(By.cssSelector("[data-test-id=\"agreement\"]")).click();
         $(By.cssSelector("button[type=\"button\"]")).click();
         $(By.cssSelector("[data-test-id=\"phone\"] .input__sub")).shouldHave(
                 text("Поле обязательно для заполнения")
